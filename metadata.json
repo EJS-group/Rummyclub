@@ -1,0 +1,6 @@
+{
+  "name": "Rummy Club",
+  "description": "2 to 8-Player Rummy card game with custom house rules, voice chat, lobby system, store, ranked leaderboard, and offline play.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

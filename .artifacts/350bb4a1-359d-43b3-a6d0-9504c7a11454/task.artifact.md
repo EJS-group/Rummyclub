@@ -1,0 +1,4 @@
+- [ ] Implement `RummyEvaluatorTest.kt` (Game Logic)
+- [ ] Implement `RummyLobbyTest.kt` (Lobby Grid Logic)
+- [ ] Implement `RummyUiLogicTest.kt` (UI Visibility Logic)
+- [ ] Run all tests and verify results

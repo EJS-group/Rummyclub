@@ -45,9 +45,11 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.example.R
 import com.example.model.Friend
 import com.example.model.NotificationItem
 import com.example.ui.theme.CasinoGreenFelt
@@ -278,14 +280,24 @@ fun ShareProfileSection(onShare: (String) -> Unit) {
             modifier = Modifier.fillMaxWidth(),
             horizontalArrangement = Arrangement.spacedBy(10.dp)
         ) {
-            listOf("WhatsApp", "Twitter / X", "Facebook", "Instagram").forEach { platform ->
+            listOf(
+                "WhatsApp" to R.drawable.ic_social_whatsapp,
+                "Twitter / X" to R.drawable.ic_social_x,
+                "Facebook" to R.drawable.ic_social_facebook,
+                "Instagram" to R.drawable.ic_social_instagram
+            ).forEach { (platform, icon) ->
                 Button(
                     onClick = { onShare(platform) },
                     modifier = Modifier.weight(1f),
                     shape = RoundedCornerShape(12.dp),
                     colors = ButtonDefaults.buttonColors(containerColor = DarkSurface)
                 ) {
-                    Text(platform, fontSize = 10.sp, color = GoldPrimary, fontWeight = FontWeight.Bold)
+                    Icon(
+                        painter = painterResource(icon),
+                        contentDescription = platform,
+                        tint = GoldPrimary,
+                        modifier = Modifier.size(20.dp)
+                    )
                 }
             }
         }

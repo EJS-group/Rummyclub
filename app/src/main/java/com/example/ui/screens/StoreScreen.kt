@@ -1,6 +1,7 @@
 package com.example.ui.screens
 
 import androidx.compose.foundation.BorderStroke
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
@@ -44,10 +45,13 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.example.R
 import com.example.model.CosmeticType
 import com.example.model.StoreItem
 import com.example.ui.theme.DarkSurface
@@ -197,12 +201,29 @@ fun StoreItemRow(item: StoreItem, onAction: () -> Unit) {
                         .border(1.dp, GoldPrimary, RoundedCornerShape(10.dp)),
                     contentAlignment = Alignment.Center
                 ) {
-                    Icon(
-                        imageVector = Icons.Default.ShoppingBag,
-                        contentDescription = item.title,
-                        tint = Color.White,
-                        modifier = Modifier.size(20.dp)
-                    )
+                    val itemArtwork = when (item.id) {
+                        "card_gold" -> R.drawable.deck_royal_gold
+                        "card_cyber" -> R.drawable.deck_cyber_neon
+                        "card_velvet" -> R.drawable.deck_velvet_crimson
+                        "frame_crown" -> R.drawable.frame_crown
+                        "frame_diamond" -> R.drawable.frame_diamond
+                        else -> null
+                    }
+                    if (itemArtwork != null) {
+                        Image(
+                            painter = painterResource(itemArtwork),
+                            contentDescription = item.title,
+                            contentScale = ContentScale.Crop,
+                            modifier = Modifier.fillMaxSize()
+                        )
+                    } else {
+                        Icon(
+                            imageVector = Icons.Default.ShoppingBag,
+                            contentDescription = item.title,
+                            tint = Color.White,
+                            modifier = Modifier.size(20.dp)
+                        )
+                    }
                 }
 
                 Column(modifier = Modifier.weight(1f)) {
